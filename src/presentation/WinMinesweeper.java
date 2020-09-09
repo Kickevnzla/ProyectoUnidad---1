@@ -16,8 +16,13 @@ import logic.Cell;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
 
 public class WinMinesweeper extends javax.swing.JFrame{
@@ -225,6 +230,44 @@ public class WinMinesweeper extends javax.swing.JFrame{
 
     private void mnuCustomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCustomActionPerformed
 
+        panGame.removeAll();
+        JLabel label = new JLabel("Filas:");
+        JLabel label2 = new JLabel("Columnas:");
+        JLabel label3 = new JLabel("Minas:");
+        JTextField txtRows = new JTextField("");
+        JTextField txtColumns = new JTextField("");
+        JTextField txtMines = new JTextField("");
+        JButton btnStart = new JButton("Iniciar");
+        
+        label.setBounds(30,10,80,20);
+        label2.setBounds(30,40,80,20);
+        label3.setBounds(30,70,80,20);
+        txtRows.setBounds(100,10,40,20);
+        txtColumns.setBounds(100,40,40,20);
+        txtMines.setBounds(100,70,40,20);
+        btnStart.setBounds(35,110,100,20);
+        
+        
+        panGame.add(label);
+        panGame.add(label2);
+        panGame.add(label3);
+        panGame.add(txtRows);
+        panGame.add(txtColumns);
+        panGame.add(txtMines);
+        panGame.add(btnStart);
+        panGame.repaint();
+        
+        btnStart.addActionListener(new ActionListener() {
+			
+            public void actionPerformed(ActionEvent e) {
+                rows = Integer.parseInt(txtRows.getText());
+                columns = Integer.parseInt(txtColumns.getText());;
+                mines = Integer.parseInt(txtMines.getText());;
+                
+                NewGame(rows,columns,mines);
+                InitialValues();
+            }
+        });
     }//GEN-LAST:event_mnuCustomActionPerformed
 
     
